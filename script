@@ -1,0 +1,27 @@
+#!/bin/bash 
+
+true=0
+false=1
+
+function is_tv_on()
+{
+	if [[ "$(tvservice -s)" =~ "state 0x12000a" ]]; then
+		return $true
+	else
+       		return $false
+	fi
+}
+
+function execute_shutdown()
+{
+	/sbin/shutdown -h now
+}
+
+now=$(date +%d/%m/%Y-%H:%M)
+if ! is_tv_on; then
+	echo "$now - Se apago, vieja" >> /home/pi/auto_shutdown/log.txt
+        execute_shutdown
+fi
+
+
+
