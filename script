@@ -19,7 +19,7 @@ function execute_shutdown()
 
 now=$(date +%d/%m/%Y-%H:%M)
 if ! is_tv_on; then
-	echo "$now - Se apago, vieja" >> /home/pi/auto_shutdown/log.txt
+	echo "$now - Executing shutdown!" >> /home/pi/auto_shutdown/log.txt
         execute_shutdown
 fi
 
